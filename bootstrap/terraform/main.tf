@@ -203,6 +203,15 @@ resource "kubectl_manifest" "environmentconfig" {
   depends_on = [module.crossplane]
 }
 
+resource "kubectl_manifest" "functions" {
+  yaml_body = templatefile("${path.module}/functions.yaml", {
+    patchAndTransformVersion = "v0.2.1"
+    autoReadyVersion         = "v0.2.1"
+  })
+
+  depends_on = [module.crossplane]
+}
+
 #---------------------------------------------------------------
 # Crossplane Providers Settings
 #---------------------------------------------------------------

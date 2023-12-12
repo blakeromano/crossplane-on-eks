@@ -163,6 +163,11 @@ kubectl wait --for condition=established --timeout=300s crd/providerconfigs.kube
 kubectl apply -f crossplane/kubernetes-provider-config.yaml
 ```
 
+```bash
+# Apply the Patch & Transform and Auto Ready functions
+kubectl apply -f crossplane/functions.yaml
+```
+
 ### Kustomize
 Note that Kustomize still relies on Crossplane helm chart because Crossplane doesn't have a published Kustomize base.
 
@@ -182,6 +187,7 @@ kubectl delete -f crossplane/kubernetes-provider-config.yaml
 kubectl delete -f crossplane/aws-provider.yaml
 kubectl delete -f crossplane/upbound-aws-provider.yaml
 kubectl delete -f crossplane/kubernetes-provider.yaml
+kubectl delete -f crossplane/functions.yaml
 ```
 
 ### Uninstall Crossplane
